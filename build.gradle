@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    annotationProcessor
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    set('springBootVersion', "2.4.5")
+    set('configurationProcessorVersion', "2.4.5")
+    set('springCloudVersion', "2020.0.2")
+}
+
+dependencies {
+    // BOM
+    implementation platform("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-stream'
+
+    // devtools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${configurationProcessorVersion}"
+
+    // テストの依存関係
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
