@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.example'
+group = 'cn.gekal.sample.gradle.bom'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -47,4 +47,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
 }
