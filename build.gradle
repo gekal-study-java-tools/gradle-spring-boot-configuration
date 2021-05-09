@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'cn.gekal.sample.gradle.bom'
+group = 'cn.gekal.sample.gradle.sample'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
