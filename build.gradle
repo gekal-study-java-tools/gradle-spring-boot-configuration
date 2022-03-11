@@ -1,11 +1,13 @@
 plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'maven-publish'
 }
 
 group = 'cn.gekal.sample.gradle.sample'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
     developmentOnly
@@ -24,14 +26,11 @@ repositories {
 }
 
 ext {
-    set('springBootVersion', "2.4.5")
-    set('configurationProcessorVersion', "2.4.5")
-    set('springCloudVersion', "2020.0.2")
+    set('springCloudVersion', "2021.0.1")
 }
 
 dependencies {
     // BOM
-    implementation platform("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
     implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -39,7 +38,7 @@ dependencies {
 
     // devtools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${configurationProcessorVersion}"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:"
 
     // テストの依存関係
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
